@@ -1,67 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة سرمد الاختياري</title>
-    <style>
-        body { font-family: Arial; text-align: center; background: #1a1a2e; color: white; padding: 20px; }
-       .game { background: #16213e; padding: 30px; border-radius: 15px; max-width: 500px; margin: 50px auto; }
-        button { background: #0f3460; color: white; border: none; padding: 15px 30px; margin: 10px; border-radius: 8px; font-size: 18px; cursor: pointer; }
-        button:hover { background: #e94560; }
-        h1 { color: #e94560; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شات سرمد</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; color: #fff; height: 100vh; display: flex; justify-content: center; align-items: center; }
+    .chat-container { width: 95%; max-width: 500px; height: 90vh; background: #1e293b; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; }
+    .chat-header { background: #3b82f6; padding: 16px; text-align: center; font-weight: bold; font-size: 18px; }
+    .chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .msg { padding: 10px 14px; border-radius: 12px; max-width: 80%; word-wrap: break-word; }
+    .user { background: #3b82f6; align-self: flex-end; }
+    .bot { background: #334155; align-self: flex-start; }
+    .chat-input { display: flex; padding: 12px; background: #0f172a; gap: 8px; }
+    .chat-input input { flex: 1; padding: 12px; border: none; border-radius: 8px; background: #1e293b; color: #fff; font-size: 16px; }
+    .chat-input button { padding: 12px 18px; border: none; border-radius: 8px; background: #3b82f6; color: #fff; font-weight: bold; cursor: pointer; }
+  </style>
 </head>
 <body>
-    <div class="game">
-        <h1>لعبة سرمد الاختياري 🎮</h1>
-        <p id="question">جاهز تبدأ اللعبة؟</p>
-        <div id="options">
-            <button onclick="startGame()">ابدأ اللعبة</button>
-        </div>
-        <p id="score">النقاط: 0</p>
-    </div>
-
-    <script>
-        let score = 0;
-        const questions = [
-            {q: "وش عاصمة السعودية؟", a: ["الرياض", "جدة", "الدمام"], correct: 0},
-            {q: "كم 5 + 5؟", a: ["8", "10", "12"], correct: 1},
-            {q: "وش لون السماء؟", a: ["أخضر", "أزرق", "أحمر"], correct: 1}
-        ];
-        let currentQ = 0;
-
-        function startGame() {
-            currentQ = 0; score = 0;
-            showQuestion();
-        }
-
-        function showQuestion() {
-            if(currentQ >= questions.length) {
-                document.getElementById('question').innerHTML = 'خلصت اللعبة! نتيجتك النهائية:';
-                document.getElementById('options').innerHTML = `<h2>${score} / ${questions.length}</h2><button onclick="startGame()">العب مرة ثانية</button>`;
-                return;
-            }
-            let q = questions[currentQ];
-            document.getElementById('question').innerHTML = q.q;
-            let optionsHTML = '';
-            q.a.forEach((option, i) => {
-                optionsHTML += `<button onclick="checkAnswer(${i})">${option}</button>`;
-            });
-            document.getElementById('options').innerHTML = optionsHTML;
-            document.getElementById('score').innerHTML = `النقاط: ${score}`;
-        }
-
-        function checkAnswer(i) {
-            if(i === questions[currentQ].correct) {
-                score++;
-                alert('صح عليك! 🎉');
-            } else {
-                alert('غلط 😅');
-            }
-            currentQ++;
-            showQuestion();
-        }
-    </script>
-</body>
-</html>
+  <div class
